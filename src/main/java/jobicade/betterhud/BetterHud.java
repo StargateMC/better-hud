@@ -3,9 +3,10 @@ package jobicade.betterhud;
 import org.apache.logging.log4j.Logger;
 
 import jobicade.betterhud.geom.LayoutManager;
+import jobicade.betterhud.network.HUDMessage;
 import jobicade.betterhud.network.InventoryNameQuery;
-import jobicade.betterhud.network.MessageConquestState;
-import jobicade.betterhud.network.MessageConquestStateHandler;
+import jobicade.betterhud.network.HUDMessage;
+import jobicade.betterhud.network.HUDMessageHandler;
 import jobicade.betterhud.network.MessageNotifyClientHandler;
 import jobicade.betterhud.network.MessagePickup;
 import jobicade.betterhud.network.MessagePickupHandler;
@@ -39,7 +40,12 @@ import net.minecraftforge.fml.relauncher.Side;
 public class BetterHud {
     public static final String MODID = "betterhud";
     public static final String VERSION = "1.4.4";
-    public static String renderConquestState = "Initializing...";
+
+    public static String renderConquestState = "Initializing..."; // Shows conquest state and owner.
+    public static String renderLocation = "Initializing..."; // Shows location specific stuff.
+    public static String renderWorldSecurity = "Initializing..."; // Shows world security level.
+    public static String renderConquestPoints = "Initializing..."; // Shows faction conquest points on world.
+    public static String renderRespawnLocation = "Initializing..."; // Shows faction conquest points on world.
     
     private static ArtifactVersion serverVersion;
 
@@ -78,7 +84,7 @@ public class BetterHud {
         // Message ID 0 reserved for ignored server presence message from [,1.4)
         NET_WRAPPER.registerMessage(MessagePickupHandler.class, MessagePickup.class, 1, Side.CLIENT);
         NET_WRAPPER.registerMessage(MessageNotifyClientHandler.class, MessageVersion.class, 2, Side.CLIENT);
-        NET_WRAPPER.registerMessage(MessageConquestStateHandler.class, MessageConquestState.class, 1, Side.CLIENT);
+        NET_WRAPPER.registerMessage(HUDMessageHandler.class, HUDMessage.class, 1, Side.CLIENT);
 
         // Used to update inventory names
         NET_WRAPPER.registerMessage(InventoryNameQuery.ServerHandler.class, InventoryNameQuery.Request.class, 3, Side.SERVER);
@@ -97,7 +103,11 @@ public class BetterHud {
         if(e.player instanceof EntityPlayerMP) {
             ArtifactVersion version = new DefaultArtifactVersion(VERSION);
             NET_WRAPPER.sendTo(new MessageVersion(version), (EntityPlayerMP)e.player);
-            NET_WRAPPER.sendTo(new MessageConquestState(renderConquestState), (EntityPlayerMP)e.player);
+            NET_WRAPPER.sendTo(new HUDMessage(1, renderLocation), (EntityPlayerMP)e.player);
+            NET_WRAPPER.sendTo(new HUDMessage(2, renderConquestState), (EntityPlayerMP)e.player);
+            NET_WRAPPER.sendTo(new HUDMessage(3, renderWorldSecurity), (EntityPlayerMP)e.player);
+            NET_WRAPPER.sendTo(new HUDMessage(4, renderConquestPoints), (EntityPlayerMP)e.player);
+            NET_WRAPPER.sendTo(new HUDMessage(5, renderRespawnLocation), (EntityPlayerMP)e.player);
         }
     }
 
