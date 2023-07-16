@@ -24,6 +24,7 @@ import jobicade.betterhud.element.settings.Setting;
 import jobicade.betterhud.element.settings.SettingPosition;
 import jobicade.betterhud.element.text.BiomeName;
 import jobicade.betterhud.element.text.Connection;
+import jobicade.betterhud.element.text.ConquestState;
 import jobicade.betterhud.element.text.Coordinates;
 import jobicade.betterhud.element.text.CpsCount;
 import jobicade.betterhud.element.text.Distance;
@@ -70,6 +71,7 @@ public abstract class HudElement implements IBoolean {
     public static final Distance DISTANCE = new Distance();
     public static final ExperienceInfo EXPERIENCE_INFO = new ExperienceInfo();
     public static final FpsCount FPS = new FpsCount();
+    public static final ConquestState conquest = new ConquestState();
     public static final FullInvIndicator FULL_INV = new FullInvIndicator();
     public static final GameClock CLOCK = new GameClock();
     public static final GlobalSettings GLOBAL = new GlobalSettings();

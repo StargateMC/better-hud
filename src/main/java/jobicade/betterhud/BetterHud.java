@@ -4,6 +4,8 @@ import org.apache.logging.log4j.Logger;
 
 import jobicade.betterhud.geom.LayoutManager;
 import jobicade.betterhud.network.InventoryNameQuery;
+import jobicade.betterhud.network.MessageConquestState;
+import jobicade.betterhud.network.MessageConquestStateHandler;
 import jobicade.betterhud.network.MessageNotifyClientHandler;
 import jobicade.betterhud.network.MessagePickup;
 import jobicade.betterhud.network.MessagePickupHandler;
@@ -37,7 +39,9 @@ import net.minecraftforge.fml.relauncher.Side;
 public class BetterHud {
     public static final String MODID = "betterhud";
     public static final String VERSION = "1.4.4";
-
+    public static int renderConquestState = 0;
+    public static String renderConquestFaction = "null";
+    
     private static ArtifactVersion serverVersion;
 
     public BetterHud() {
@@ -75,6 +79,7 @@ public class BetterHud {
         // Message ID 0 reserved for ignored server presence message from [,1.4)
         NET_WRAPPER.registerMessage(MessagePickupHandler.class, MessagePickup.class, 1, Side.CLIENT);
         NET_WRAPPER.registerMessage(MessageNotifyClientHandler.class, MessageVersion.class, 2, Side.CLIENT);
+        NET_WRAPPER.registerMessage(MessageConquestStateHandler.class, MessageConquestState.class, 1, Side.CLIENT);
 
         // Used to update inventory names
         NET_WRAPPER.registerMessage(InventoryNameQuery.ServerHandler.class, InventoryNameQuery.Request.class, 3, Side.SERVER);
@@ -93,6 +98,7 @@ public class BetterHud {
         if(e.player instanceof EntityPlayerMP) {
             ArtifactVersion version = new DefaultArtifactVersion(VERSION);
             NET_WRAPPER.sendTo(new MessageVersion(version), (EntityPlayerMP)e.player);
+            NET_WRAPPER.sendTo(new MessageConquestState(12, "Testing"), (EntityPlayerMP)e.player);
         }
     }
 
