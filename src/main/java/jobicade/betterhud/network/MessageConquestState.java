@@ -5,24 +5,20 @@ import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.ByteBufUtils;
 
 public class MessageConquestState implements IMessage {
-    public int state;
-    public String faction;
+    public String state;
 
     public MessageConquestState() {}
-    public MessageConquestState(int state, String faction) {
+    public MessageConquestState(String state) {
         this.state = state;
-        this.faction = faction;
     }
 
     @Override
     public void fromBytes(ByteBuf buf) {
-        this.state = buf.readInt();
-        this.faction = ByteBufUtils.readUTF8String(buf); 
+        this.state = ByteBufUtils.readUTF8String(buf); 
     }
 
     @Override
     public void toBytes(ByteBuf buf) {
-        buf.writeInt(state);
-        ByteBufUtils.writeUTF8String(buf, faction); 
+        ByteBufUtils.writeUTF8String(buf, state); 
     }
 }

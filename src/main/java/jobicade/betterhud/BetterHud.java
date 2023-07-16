@@ -39,8 +39,7 @@ import net.minecraftforge.fml.relauncher.Side;
 public class BetterHud {
     public static final String MODID = "betterhud";
     public static final String VERSION = "1.4.4";
-    public static int renderConquestState = 0;
-    public static String renderConquestFaction = "null";
+    public static String renderConquestState = "Initializing...";
     
     private static ArtifactVersion serverVersion;
 
@@ -98,7 +97,7 @@ public class BetterHud {
         if(e.player instanceof EntityPlayerMP) {
             ArtifactVersion version = new DefaultArtifactVersion(VERSION);
             NET_WRAPPER.sendTo(new MessageVersion(version), (EntityPlayerMP)e.player);
-            NET_WRAPPER.sendTo(new MessageConquestState(12, "Testing"), (EntityPlayerMP)e.player);
+            NET_WRAPPER.sendTo(new MessageConquestState(renderConquestState), (EntityPlayerMP)e.player);
         }
     }
 

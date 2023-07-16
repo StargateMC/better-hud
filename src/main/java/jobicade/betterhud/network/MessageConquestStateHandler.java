@@ -8,8 +8,7 @@ import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 public class MessageConquestStateHandler implements IMessageHandler<MessageConquestState, IMessage> {
     @Override
     public IMessage onMessage(MessageConquestState message, MessageContext ctx) {
-        System.out.println("RECEIVED: state id " + message.state + ", faction " + message.faction);
-        BetterHud.renderConquestFaction = message.faction;
+        System.out.println("RECEIVED: state id " + message.state);
         BetterHud.renderConquestState = message.state;
         return null;
     }
