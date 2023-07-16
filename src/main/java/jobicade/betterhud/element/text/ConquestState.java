@@ -29,6 +29,6 @@ public class ConquestState extends TextElement {
 
     @Override
     protected List<String> getText() {
-        return Arrays.asList(BetterHud.renderConquestState);
+        return Arrays.asList("Conquest State : " + BetterHud.renderConquestState);
     }
 }
