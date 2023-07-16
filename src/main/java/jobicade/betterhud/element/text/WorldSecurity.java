@@ -29,6 +29,6 @@ public class WorldSecurity extends TextElement {
 
     @Override
     protected List<String> getText() {
-        return Arrays.asList("Security Status: " + BetterHud.renderRespawnLocation);
+        return Arrays.asList("Security Status: " + BetterHud.renderWorldSecurity);
     }
 }
