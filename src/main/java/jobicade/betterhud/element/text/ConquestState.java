@@ -15,7 +15,7 @@ public class ConquestState extends TextElement {
     public void loadDefaults() {
         super.loadDefaults();
 
-        position.setPreset(Direction.SOUTH_WEST);
+        position.setPreset(Direction.NORTH_WEST);
     }
 
     public ConquestState() {
