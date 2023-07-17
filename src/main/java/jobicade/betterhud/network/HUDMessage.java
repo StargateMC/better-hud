@@ -17,7 +17,12 @@ public class HUDMessage implements IMessage {
     @Override
     public void fromBytes(ByteBuf buf) {
         this.id = buf.readInt();
-        this.state = ByteBufUtils.readUTF8String(buf); 
+        try {
+            this.state = ByteBufUtils.readUTF8String(buf); 
+        } catch (Exception e) {
+            this.state = "Error, check client logs!";
+            e.printStackTrace();
+        }
     }
 
     @Override
