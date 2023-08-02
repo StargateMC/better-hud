@@ -46,6 +46,7 @@ public class BetterHud {
     public static String renderWorldSecurity = "Initializing..."; // Shows world security level.
     public static String renderConquestPoints = "Initializing..."; // Shows faction conquest points on world.
     public static String renderRespawnLocation = "Initializing..."; // Shows faction conquest points on world.
+    public static String renderSystemImportance = "Initializing..."; // Shows faction conquest points on world.
     
     private static ArtifactVersion serverVersion;
 
@@ -108,6 +109,7 @@ public class BetterHud {
             NET_WRAPPER.sendTo(new HUDMessage(3, renderWorldSecurity), (EntityPlayerMP)e.player);
             NET_WRAPPER.sendTo(new HUDMessage(4, renderConquestPoints), (EntityPlayerMP)e.player);
             NET_WRAPPER.sendTo(new HUDMessage(5, renderRespawnLocation), (EntityPlayerMP)e.player);
+            NET_WRAPPER.sendTo(new HUDMessage(6, renderSystemImportance), (EntityPlayerMP)e.player);
         }
     }
 

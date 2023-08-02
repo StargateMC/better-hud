@@ -8,7 +8,6 @@ import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 public class HUDMessageHandler implements IMessageHandler<HUDMessage, IMessage> {
     @Override
     public IMessage onMessage(HUDMessage message, MessageContext ctx) {
-        System.out.println("RECEIVED: HUD id " + message.id + ", text: " + message.state);
         switch (message.id) {
             case 1:
                 BetterHud.renderLocation = message.state;
@@ -24,6 +23,9 @@ public class HUDMessageHandler implements IMessageHandler<HUDMessage, IMessage> 
                 break;              
             case 5:
                 BetterHud.renderRespawnLocation = message.state;
+                break;     
+            case 6:
+                BetterHud.renderSystemImportance = message.state;
                 break;
         }
         return null;

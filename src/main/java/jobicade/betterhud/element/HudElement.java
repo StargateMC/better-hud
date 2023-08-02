@@ -65,6 +65,7 @@ public abstract class HudElement implements IBoolean {
     public static final LocationInfo LOCATION = new LocationInfo();
     public static final NearestRespawn RESPAWN = new NearestRespawn();
     public static final WorldSecurity WORLD_SEC = new WorldSecurity();
+    public static final SystemImportance SYS_IMPORTANCE = new SystemImportance();
     public static final FullInvIndicator FULL_INV = new FullInvIndicator();
     public static final GameClock CLOCK = new GameClock();
     public static final GlobalSettings GLOBAL = new GlobalSettings();
