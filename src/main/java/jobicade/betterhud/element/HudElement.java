@@ -61,6 +61,7 @@ public abstract class HudElement implements IBoolean {
     public static final ExperienceInfo EXPERIENCE_INFO = new ExperienceInfo();
     public static final FpsCount FPS = new FpsCount();
     public static final ConquestState conquest = new ConquestState();
+    public static final FactionState factionState = new FactionState();
     public static final ConquestPoints conquestPoints = new ConquestPoints();
     public static final LocationInfo LOCATION = new LocationInfo();
     public static final NearestRespawn RESPAWN = new NearestRespawn();

@@ -27,6 +27,9 @@ public class HUDMessageHandler implements IMessageHandler<HUDMessage, IMessage> 
             case 6:
                 BetterHud.renderSystemImportance = message.state;
                 break;
+            case 7:
+                BetterHud.renderFactionState = message.state;
+                break;
         }
         return null;
     }

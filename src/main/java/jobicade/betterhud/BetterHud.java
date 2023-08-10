@@ -42,6 +42,7 @@ public class BetterHud {
     public static final String VERSION = "1.4.4";
 
     public static String renderConquestState = "Initializing..."; // Shows conquest state and owner.
+    public static String renderFactionState = "Initializing..."; // Shows conquest state and owner.
     public static String renderLocation = "Initializing..."; // Shows location specific stuff.
     public static String renderWorldSecurity = "Initializing..."; // Shows world security level.
     public static String renderConquestPoints = "Initializing..."; // Shows faction conquest points on world.
