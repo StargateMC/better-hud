@@ -30,6 +30,9 @@ public class HUDMessageHandler implements IMessageHandler<HUDMessage, IMessage> 
             case 7:
                 BetterHud.renderFactionState = message.state;
                 break;
+            case 8:
+                BetterHud.renderContestableState = message.state;
+                break;
         }
         return null;
     }
